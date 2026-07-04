@@ -9,7 +9,7 @@ const heroSlides = [
     id: 1,
     title: 'Timeless Elegance',
     subtitle: 'Discover our premium sterling silver collection',
-    image: '/products/pendant-necklace.png',
+    image: '1.jpeg',
     cta: 'Shop Now',
     ctaLink: '/products',
   },
@@ -108,7 +108,7 @@ export function HeroCarousel() {
       <button
         onClick={prev}
         className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-primary/20 hover:bg-primary/40 text-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 backdrop-blur-md"
-      >
+      > 
         <ChevronLeft size={24} />
       </button>
 

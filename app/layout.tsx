@@ -6,7 +6,7 @@ import { Footer } from '@/components/Footer'
 import { CartProvider } from '@/context/CartContext'
 import { WishlistProvider } from '@/context/WishlistContext'
 import { AuthProvider } from '@/context/AuthContext'
-import { StickySearchBar } from '@/components/StickySearchBar'
+import { Header } from '@/components/Header'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({
@@ -55,7 +55,7 @@ export default function RootLayout({
         <AuthProvider>
           <WishlistProvider>
             <CartProvider>
-              <StickySearchBar />
+              <Header />
               <main className="flex-1">
                 {children}
               </main>

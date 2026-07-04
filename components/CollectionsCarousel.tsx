@@ -36,10 +36,10 @@ export function CollectionsCarousel() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-2">
+          <h2 className="text-4xl md:text-5xl font-bold text-accent mb-2">
             Explore Collections
           </h2>
-          <p className="text-primary/60">Discover our curated silver collections</p>
+          <p className="text-accent/60">Discover our curated silver collections</p>
         </div>
 
         {/* Carousel Container */}

@@ -50,7 +50,7 @@
 
 :root {
   color-scheme: dark;
-  --background: #25314d;
+  --background: #0f172a;
   --foreground: #ca94c1;
   --card: #49496c;
   --card-foreground: #ca94c1;
@@ -62,7 +62,7 @@
   --secondary-foreground: #25314d;
   --muted: #71618a;
   --muted-foreground: #ca94c1;
-  --accent: #f9afd8;
+  --accent: #e8e8e8;
   --accent-foreground: #25314d;
   --destructive: #ff6b6b;
   --border: #49496c;
@@ -86,7 +86,7 @@
 
 .dark {
   color-scheme: dark;
-  --background: #25314d;
+  --background: #0f172a;
   --foreground: #ca94c1;
   --card: #49496c;
   --card-foreground: #ca94c1;
