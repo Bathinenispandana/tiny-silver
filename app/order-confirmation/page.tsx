@@ -3,9 +3,9 @@
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle, Download, Mail } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 
-export default function OrderConfirmationPage() {
+function OrderConfirmationContent() {
   const searchParams = useSearchParams()
   const orderId = searchParams.get('orderId')
   const [isLoading, setIsLoading] = useState(true)
@@ -169,5 +169,13 @@ export default function OrderConfirmationPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function OrderConfirmationPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center">Loading...</div>}>
+      <OrderConfirmationContent />
+    </Suspense>
   )
 }
