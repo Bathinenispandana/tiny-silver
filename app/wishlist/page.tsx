@@ -89,7 +89,7 @@ export default function WishlistPage() {
                   </Link>
                   <button
                     onClick={() => {
-                      addToCart(product.id)
+                      addToCart(product, 1)
                     }}
                     className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-background font-medium hover:bg-primary/90 transition-colors text-sm"
                   >

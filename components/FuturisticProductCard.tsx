@@ -5,7 +5,7 @@ import { ShoppingCart, Heart } from 'lucide-react'
 import { useState } from 'react'
 
 interface Product {
-  id: number
+  id: string
   name: string
   price: number
   category: string
