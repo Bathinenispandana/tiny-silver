@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { FuturisticProductCard } from '@/components/FuturisticProductCard'
 import { MasonryGrid } from '@/components/MasonryGrid'
 import { products, categories } from '@/lib/products'
 import { Filter, X, ChevronDown, Search } from 'lucide-react'
 
-export default function ProductsPage() {
+function ProductsContent() {
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('search')?.toLowerCase() || ''
   
@@ -219,5 +219,13 @@ export default function ProductsPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center">Loading...</div>}>
+      <ProductsContent />
+    </Suspense>
   )
 }
