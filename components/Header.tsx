@@ -50,7 +50,7 @@ export function Header() {
   const cartCount = cart?.length || 0
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-40 bg-primary-foreground">
+    <div className="fixed top-0 left-0 right-0 z-40 bg-sidebar-border">
       <div className="max-w-7xl px-10">
         {/* Header Row */}
         <div className="flex items-center justify-between gap-6">
@@ -73,7 +73,7 @@ export function Header() {
             >
               <Heart size={16} className="text-accent" />
               <div className="text-left">
-                <p className="text-xs text-accent font-medium">Where to Deliver?</p>
+                <p className="text-xs text-white font-medium">Where to Deliver?</p>
                 <p className="text-sm font-semibold text-accent/60">Update Delivery Pincode</p>
               </div>
             </button>

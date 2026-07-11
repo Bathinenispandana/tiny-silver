@@ -5,11 +5,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useRef } from 'react'
 
 const collections = [
-  { id: 1, name: 'Necklaces', image: '/products/pendant-necklace.png', count: 24 },
-  { id: 2, name: 'Rings', image: '/products/statement-ring.png', count: 18 },
-  { id: 3, name: 'Bracelets', image: '/products/pendant-necklace.png', count: 16 },
-  { id: 4, name: 'Earrings', image: '/products/statement-ring.png', count: 22 },
-  { id: 5, name: 'Anklets', image: '/products/pendant-necklace.png', count: 12 },
+  { id: 1, name: 'KumKumBox', image: '/Kumkum-box.png', count: 2 },
+  { id: 2, name: 'ToeRings', image: '/toe-ring-fly.jpeg', count: 4 },
+  { id: 3, name: 'Diya', image: '/diya.jpeg', count: 2 },
+  { id: 4, name: 'Plates', image: '/plate.jpeg', count: 2 },
+  { id: 5, name: 'Glass', image: '/Glass.png', count: 1 },
   { id: 6, name: 'Sets', image: '/products/statement-ring.png', count: 14 },
 ]
 
@@ -68,8 +68,8 @@ export function CollectionsCarousel() {
 
                   {/* Content */}
                   <div className="absolute inset-0 flex flex-col justify-end p-6 text-primary z-10">
-                    <h3 className="text-2xl font-bold mb-1">{collection.name}</h3>
-                    <p className="text-sm text-primary/60">{collection.count} items</p>
+                    <h3 className="text-2xl text-sidebar font-bold mb-1">{collection.name}</h3>
+                    <p className="text-sm text-sidebar">{collection.count} items</p>
 
                     {/* Floating button */}
                     <div className="mt-4 inline-block px-4 py-2 bg-gradient-to-r from-primary to-accent text-background rounded-lg font-semibold opacity-0 group-hover:opacity-100 transform -translate-y-2 group-hover:translate-y-0 transition-all duration-300">
