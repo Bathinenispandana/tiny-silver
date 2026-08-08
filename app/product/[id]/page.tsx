@@ -11,7 +11,7 @@ import { ShoppingCart, ChevronLeft, Heart, Share2, CheckCircle } from 'lucide-re
 
 export default function ProductDetailPage() {
   const params = useParams()
-  const productId = params.id as string
+  const productId = Number(params.id)
   const product = products.find((p) => p.id === productId)
   const { addToCart } = useCart()
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist()

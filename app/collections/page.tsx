@@ -7,54 +7,47 @@ import { useRef } from 'react'
 const collections = [
   {
     id: 1,
-    name: 'KumKumBox',
-    slug: 'kumkum-box',
-    image: '/silver-kumkumbox-2.5g-1.webp',
-    count: 3,
+    name: "KumKumBox",
+    slug: "kumkum-box",
+    image: "/Kumkum-box.png",
+    count: 2,
   },
   {
     id: 2,
-    name: 'Toe Rings',
-    slug: 'toe-rings',
-    image: '/flower-4g-1.webp',
+    name: "Toe Rings",
+    slug: "toe-rings",
+    image: "/toe-ring-fly.jpeg",
     count: 4,
   },
   {
     id: 3,
-    name: 'Diya',
-    slug: 'diya',
-    image: '/silver-diya-5g-1.webp',
+    name: "Diya",
+    slug: "diya",
+    image: "/diya.jpeg",
     count: 2,
   },
   {
     id: 4,
-    name: 'Plates',
-    slug: 'plates',
-    image: '/silver-plate-5g-1.webp',
-    count: 1,
+    name: "Plates",
+    slug: "plates",
+    image: "/plate.jpeg",
+    count: 2,
   },
   {
     id: 5,
-    name: 'Glass',
-    slug: 'glass',
-    image: '/5g-Glass.webp',
+    name: "Glass",
+    slug: "glass",
+    image: "/Glass.png",
     count: 1,
   },
   {
     id: 6,
-    name: 'leafs',
-    slug: 'leaf',
-    image: '/2g-mango-leaf.webp',
-    count: 2,
+    name: "Sets",
+    slug: "sets",
+    image: "/products/statement-ring.png",
+    count: 14,
   },
-  {
-    id: 7,
-    name: 'srichakra',
-    slug: 'srichakra',
-    image: '/2g-Srichakra.webp',
-    count: 1,
-  },
-]
+];
 
 export function CollectionsCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -82,7 +75,6 @@ export function CollectionsCarousel() {
           <h2 className="mb-2 text-3xl font-bold text-accent">
             Explore Collections
           </h2>
-
           <p className="text-accent/60">
             Discover our curated silver collections
           </p>
@@ -97,10 +89,12 @@ export function CollectionsCarousel() {
             {collections.map((collection) => (
               <Link
                 key={collection.id}
-                href={`/collections/${collection.slug}`}
+                href={`/products?category=${encodeURIComponent(
+                  collection.name.toLowerCase()
+                )}`}
                 className="group flex w-52 flex-shrink-0 snap-start flex-col items-center"
               >
-                {/* Image */}
+                {/* Circular Image */}
                 <div className="relative h-44 w-44 overflow-hidden rounded-full border border-primary/20 bg-background shadow-md transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-xl">
                   <img
                     src={collection.image}
@@ -111,7 +105,7 @@ export function CollectionsCarousel() {
                   <div className="absolute inset-0 rounded-full bg-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
 
-                {/* Content */}
+                {/* Content Outside Image */}
                 <div className="mt-5 flex flex-col items-center text-center">
                   <h3 className="text-xl font-bold text-accent">
                     {collection.name}

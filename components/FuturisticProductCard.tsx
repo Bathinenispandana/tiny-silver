@@ -7,7 +7,7 @@ import { useState } from 'react'
 interface Product {
   id: string
   name: string
-  price: number
+  price: string
   category: string
   image: string
   rating: number
