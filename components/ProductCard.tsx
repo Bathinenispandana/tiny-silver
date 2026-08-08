@@ -1,50 +1,43 @@
-import Link from 'next/link'
-import { Product } from '@/lib/products'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
+import { Product } from "@/lib/products";
 
 interface ProductCardProps {
-  product: Product
+  product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const formattedPrice = `₹${product.price.toLocaleString('en-IN')}`
+  const formattedPrice = `₹${Number(product.price).toLocaleString("en-IN")}`;
 
   return (
     <Link href={`/product/${product.id}`}>
-      <div className="group h-full overflow-hidden rounded-lg border border-border bg-card transition-all hover:shadow-lg hover:border-accent">
+      <div className="group h-full overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:shadow-xl">
         {/* Image */}
-        <div className="relative h-64 w-full overflow-hidden bg-muted">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-muted-foreground/30 mb-2">
-                ◆
-              </div>
-              <p className="text-sm text-muted-foreground text-balance">
-                {product.name}
-              </p>
-            </div>
-          </div>
+        <div className="relative h-72 w-full overflow-hidden bg-muted">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-6">
-          {/* Category */}
+        <div className="p-5">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">
             {product.category}
           </p>
 
-          {/* Name */}
-          <h3 className="mb-2 text-lg font-semibold text-foreground text-balance group-hover:text-accent transition-colors">
+          <h3 className="mb-2 text-xl font-semibold group-hover:text-accent transition-colors">
             {product.name}
           </h3>
 
-          {/* Description */}
-          <p className="mb-4 text-sm text-muted-foreground line-clamp-2">
+          <p className="mb-4 line-clamp-2 text-sm text-muted-foreground">
             {product.description}
           </p>
 
-          {/* Details */}
-          <div className="mb-4 space-y-1 text-xs text-muted-foreground">
+          <div className="mb-4 space-y-1 text-sm text-muted-foreground">
             <p>
               <span className="font-medium">Material:</span> {product.material}
             </p>
@@ -53,19 +46,23 @@ export function ProductCard({ product }: ProductCardProps) {
             </p>
           </div>
 
-          {/* Price */}
           <div className="flex items-center justify-between">
-            <span className="text-lg font-bold text-foreground">
+            <span className="text-2xl font-bold">
               {formattedPrice}
             </span>
+
             {product.inStock ? (
-              <span className="text-xs font-semibold text-green-600">In Stock</span>
+              <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+                In Stock
+              </span>
             ) : (
-              <span className="text-xs font-semibold text-destructive">Out of Stock</span>
+              <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-700">
+                Out of Stock
+              </span>
             )}
           </div>
         </div>
       </div>
     </Link>
-  )
+  );
 }

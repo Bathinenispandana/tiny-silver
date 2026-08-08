@@ -5,6 +5,7 @@ import { NewsletterSignup } from '@/components/NewsletterSignup'
 import { PressSection } from '@/components/PressSection'
 import FeaturedCollections  from '@/components/FeaturedCollections'
 import Cta from '@/components/cta'  
+import Newarrivals from '@/components/newarrivals'
 
 export const metadata = {
   title: 'Luxe Silver - Premium Sterling Silver Jewelry',
@@ -18,6 +19,7 @@ export default function Home() {
     <div className="bg-background">
       {/* Hero Carousel */}
       <HeroCarousel />
+      <Newarrivals/>
 
       {/* Collections Carousel */}
       <CollectionsCarousel />
