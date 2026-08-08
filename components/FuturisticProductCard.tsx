@@ -3,16 +3,7 @@
 import Link from 'next/link'
 import { ShoppingCart, Heart } from 'lucide-react'
 import { useState } from 'react'
-
-interface Product {
-  id: string
-  name: string
-  price: string
-  category: string
-  image: string
-  rating: number
-  reviews: number
-}
+import type { Product } from '@/lib/products'
 
 export function FuturisticProductCard({ product }: { product: Product }) {
   const [isWishlisted, setIsWishlisted] = useState(false)
@@ -59,7 +50,7 @@ export function FuturisticProductCard({ product }: { product: Product }) {
 
             {/* Rating Badge */}
             <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full backdrop-blur-md bg-primary/20 border border-primary/40 text-primary text-xs font-semibold">
-              ★ {product.rating} ({product.reviews})
+              ★ {product.rating ?? 0} ({product.reviews ?? 0})
             </div>
           </div>
 

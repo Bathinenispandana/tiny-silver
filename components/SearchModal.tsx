@@ -26,9 +26,9 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     const filtered = products.filter(
       (product) =>
         product.name.toLowerCase().includes(query) ||
-        product.description.toLowerCase().includes(query) ||
+        (product.description ?? '').toLowerCase().includes(query) ||
         product.category.toLowerCase().includes(query) ||
-        product.material.toLowerCase().includes(query)
+        (product.material ?? '').toLowerCase().includes(query)
     )
     setSearchResults(filtered)
   }, [searchQuery])
@@ -88,7 +88,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         <p className="text-primary font-medium group-hover:text-accent transition-colors truncate">
                           {product.name}
                         </p>
-                        <p className="text-primary/60 text-sm line-clamp-1">{product.description}</p>
+                        <p className="text-primary/60 text-sm line-clamp-1">{product.description ?? 'Handcrafted sterling silver piece.'}</p>
                         <div className="flex items-center justify-between mt-1">
                           <span className="text-xs text-primary/50">{product.category}</span>
                           <span className="text-sm font-semibold text-accent">₹{product.price.toLocaleString()}</span>
@@ -100,7 +100,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               </div>
             ) : (
               <div className="p-12 text-center">
-                <p className="text-primary/60 font-medium">No products found for "{searchQuery}"</p>
+                <p className="text-primary/60 font-medium">No products found for &quot;{searchQuery}&quot;</p>
                 <p className="text-primary/40 text-sm mt-2">Try searching for categories, materials, or product names</p>
               </div>
             )}
@@ -113,7 +113,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 onClick={handleSearch}
                 className="w-full py-2 bg-gradient-to-r from-primary to-accent text-background font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
               >
-                View All Results for "{searchQuery}"
+                View All Results for &quot;{searchQuery}&quot;
               </button>
             </div>
           )}

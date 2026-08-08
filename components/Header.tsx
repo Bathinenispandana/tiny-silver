@@ -249,7 +249,7 @@ export function Header() {
       (product) =>
         product.name.toLowerCase().includes(query) ||
         product.category.toLowerCase().includes(query) ||
-        product.material.toLowerCase().includes(query)
+        (product.material ?? '').toLowerCase().includes(query)
     )
     setSearchResults(filtered)
   }, [searchQuery])

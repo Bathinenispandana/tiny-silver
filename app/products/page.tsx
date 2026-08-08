@@ -23,9 +23,9 @@ function ProductsContent() {
     if (searchQuery) {
       filtered = filtered.filter((p) =>
         p.name.toLowerCase().includes(searchQuery) ||
-        p.description.toLowerCase().includes(searchQuery) ||
+        (p.description ?? '').toLowerCase().includes(searchQuery) ||
         p.category.toLowerCase().includes(searchQuery) ||
-        p.material.toLowerCase().includes(searchQuery)
+        (p.material ?? '').toLowerCase().includes(searchQuery)
       )
     }
 
@@ -106,7 +106,7 @@ function ProductsContent() {
                     </a>
                   </div>
                   <p className="text-sm text-primary/70 px-4 py-2 rounded-lg backdrop-blur-md bg-primary/10 border border-primary/20">
-                    "{searchQuery}"
+                    &quot;{searchQuery}&quot;
                   </p>
                 </div>
               )}

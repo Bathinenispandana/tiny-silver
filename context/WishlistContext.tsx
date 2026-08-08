@@ -3,16 +3,16 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 
 interface WishlistContextType {
-  wishlist: string[]
-  addToWishlist: (productId: string) => void
-  removeFromWishlist: (productId: string) => void
-  isInWishlist: (productId: string) => boolean
+  wishlist: number[]
+  addToWishlist: (productId: number) => void
+  removeFromWishlist: (productId: number) => void
+  isInWishlist: (productId: number) => boolean
 }
 
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined)
 
 export function WishlistProvider({ children }: { children: React.ReactNode }) {
-  const [wishlist, setWishlist] = useState<string[]>([])
+  const [wishlist, setWishlist] = useState<number[]>([])
   const [isHydrated, setIsHydrated] = useState(false)
 
   // Load wishlist from localStorage on mount
@@ -31,18 +31,18 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
     }
   }, [wishlist, isHydrated])
 
-  const addToWishlist = (productId: string) => {
+  const addToWishlist = (productId: number) => {
     setWishlist((prev) => {
       if (prev.includes(productId)) return prev
       return [...prev, productId]
     })
   }
 
-  const removeFromWishlist = (productId: string) => {
+  const removeFromWishlist = (productId: number) => {
     setWishlist((prev) => prev.filter((id) => id !== productId))
   }
 
-  const isInWishlist = (productId: string) => {
+  const isInWishlist = (productId: number) => {
     return wishlist.includes(productId)
   }
 
