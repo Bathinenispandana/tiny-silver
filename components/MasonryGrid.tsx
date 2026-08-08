@@ -1,16 +1,7 @@
 'use client'
 
 import { FuturisticProductCard } from './FuturisticProductCard'
-
-interface Product {
-  id: string
-  name: string
-  price: number
-  category: string
-  image: string
-  rating: number
-  reviews: number
-}
+import type { Product } from '@/lib/products'
 
 interface MasonryGridProps {
   products: Product[]

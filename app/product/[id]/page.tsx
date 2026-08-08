@@ -25,7 +25,7 @@ export default function ProductDetailPage() {
         <div className="text-center space-y-6">
           <div className="text-6xl text-primary/20">◆</div>
           <h1 className="text-3xl font-bold text-primary">Product not found</h1>
-          <p className="text-primary/60">The product you're looking for doesn't exist.</p>
+          <p className="text-primary/60">The product you&apos;re looking for doesn&apos;t exist.</p>
           <Link
             href="/products"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-background rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all"
@@ -117,7 +117,7 @@ export default function ProductDetailPage() {
                   {product.category}
                 </span>
                 <div className="text-sm text-primary/60">
-                  ★ {product.rating} ({product.reviews} reviews)
+                  ★ {product.rating ?? 0} ({product.reviews ?? 0} reviews)
                 </div>
               </div>
 
@@ -128,7 +128,7 @@ export default function ProductDetailPage() {
 
               {/* Description */}
               <p className="text-lg text-primary/70 leading-relaxed">
-                {product.description}
+                {product.description ?? 'Handcrafted sterling silver piece.'}
               </p>
 
               {/* Price */}
@@ -161,15 +161,15 @@ export default function ProductDetailPage() {
               <div className="space-y-3">
                 <div className="flex items-center justify-between pb-3 border-b border-primary/10">
                   <span className="text-sm text-primary/60">Material</span>
-                  <span className="font-semibold text-primary">{product.material}</span>
+                  <span className="font-semibold text-primary">{product.material ?? 'Sterling silver'}</span>
                 </div>
                 <div className="flex items-center justify-between pb-3 border-b border-primary/10">
                   <span className="text-sm text-primary/60">Weight</span>
-                  <span className="font-semibold text-primary">{product.weight}</span>
+                  <span className="font-semibold text-primary">{product.weight ?? '—'}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-primary/60">Dimensions</span>
-                  <span className="font-semibold text-primary">{product.dimensions}</span>
+                  <span className="font-semibold text-primary">{product.dimensions ?? '—'}</span>
                 </div>
               </div>
             </div>

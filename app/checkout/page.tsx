@@ -8,8 +8,38 @@ import { ChevronLeft, Loader2, Lock, CheckCircle } from 'lucide-react'
 
 declare global {
   interface Window {
-    Razorpay: any
+    Razorpay?: new (options: RazorpayOptions) => RazorpayInstance
   }
+}
+
+interface RazorpayPaymentResponse {
+  razorpay_payment_id: string
+  razorpay_signature: string
+}
+
+interface RazorpayOptions {
+  key?: string
+  amount: number
+  currency: string
+  name: string
+  description: string
+  order_id: string
+  customer_details: {
+    name: string
+    email: string
+    contact: string
+  }
+  handler: (response: RazorpayPaymentResponse) => Promise<void>
+  prefill: {
+    name: string
+    email: string
+    contact: string
+  }
+  theme: { color: string }
+}
+
+interface RazorpayInstance {
+  open: () => void
 }
 
 export default function CheckoutPage() {
@@ -115,7 +145,7 @@ export default function CheckoutPage() {
           email: formData.email,
           contact: formData.phone,
         },
-        handler: async (response: any) => {
+        handler: async (response: RazorpayPaymentResponse) => {
           try {
             const verifyResponse = await fetch('/api/verify-payment', {
               method: 'POST',
@@ -147,6 +177,10 @@ export default function CheckoutPage() {
         theme: {
           color: '#ca94c1',
         },
+      }
+
+      if (!window.Razorpay) {
+        throw new Error('Payment gateway is still loading. Please try again.')
       }
 
       const razorpay = new window.Razorpay(options)

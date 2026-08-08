@@ -34,12 +34,12 @@ export function ProductCard({ product }: ProductCardProps) {
           </h3>
 
           <p className="mb-4 line-clamp-2 text-sm text-muted-foreground">
-            {product.description}
+            {product.description ?? 'Handcrafted sterling silver piece.'}
           </p>
 
           <div className="mb-4 space-y-1 text-sm text-muted-foreground">
             <p>
-              <span className="font-medium">Material:</span> {product.material}
+              <span className="font-medium">Material:</span> {product.material ?? 'Sterling silver'}
             </p>
             <p>
               <span className="font-medium">Weight:</span> {product.weight}
