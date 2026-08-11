@@ -35,6 +35,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (savedUser) {
       try {
         const userData = JSON.parse(savedUser)
+        // Hydrate persisted client state after mount.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setUser(userData)
         setIsLoggedIn(true)
       } catch (error) {

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useMemo, useState } from 'react'
 import { Search, X } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -13,24 +13,18 @@ interface SearchModalProps {
 
 export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [searchQuery, setSearchQuery] = useState('')
-  const [searchResults, setSearchResults] = useState(products)
   const router = useRouter()
+  const searchResults = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase()
+    if (!query) return products
 
-  useEffect(() => {
-    if (!searchQuery.trim()) {
-      setSearchResults(products)
-      return
-    }
-
-    const query = searchQuery.toLowerCase()
-    const filtered = products.filter(
+    return products.filter(
       (product) =>
         product.name.toLowerCase().includes(query) ||
         (product.description ?? '').toLowerCase().includes(query) ||
         product.category.toLowerCase().includes(query) ||
         (product.material ?? '').toLowerCase().includes(query)
     )
-    setSearchResults(filtered)
   }, [searchQuery])
 
   const handleSearch = (e: React.FormEvent) => {

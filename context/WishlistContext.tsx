@@ -19,6 +19,8 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const saved = localStorage.getItem('wishlist')
     if (saved) {
+      // Hydrate persisted client state after mount.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setWishlist(JSON.parse(saved))
     }
     setIsHydrated(true)
