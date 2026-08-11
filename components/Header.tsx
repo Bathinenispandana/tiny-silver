@@ -216,7 +216,7 @@
 
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useMemo, useState } from 'react'
 import { Search, X, Heart, ShoppingBag, MapPin, User, Store } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -228,7 +228,6 @@ import Image from 'next/image'
 
 export function Header() {
   const [searchQuery, setSearchQuery] = useState('')
-  const [searchResults, setSearchResults] = useState<typeof products>([])
   const [showResults, setShowResults] = useState(false)
   const [pincode, setPincode] = useState('110001')
   const [showPincodeDropdown, setShowPincodeDropdown] = useState(false)
@@ -236,22 +235,16 @@ export function Header() {
   const { wishlist } = useWishlist()
   const { cart } = useCart()
 
-  useEffect(() => {
-    if (!searchQuery.trim()) {
-      setSearchResults([])
-      setShowResults(false)
-      return
-    }
+  const searchResults = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase()
+    if (!query) return []
 
-    setShowResults(true)
-    const query = searchQuery.toLowerCase()
-    const filtered = products.filter(
+    return products.filter(
       (product) =>
         product.name.toLowerCase().includes(query) ||
         product.category.toLowerCase().includes(query) ||
         (product.material ?? '').toLowerCase().includes(query)
     )
-    setSearchResults(filtered)
   }, [searchQuery])
 
   const handleSearch = (e: React.FormEvent) => {
@@ -324,7 +317,10 @@ export function Header() {
               type="text"
               placeholder={`Search "Pendants"`}
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value)
+                setShowResults(Boolean(e.target.value.trim()))
+              }}
               className="flex-1 bg-transparent text-accent placeholder:text-accent/50 outline-none text-sm"
             />
             {searchQuery && (
