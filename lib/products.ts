@@ -97,7 +97,7 @@ export const products: Product[] = [
     id: 9,
     name: "Flower Toe Ring",
     price: 2520,
-    image: "/flower-3g-1.webp",
+    image: "/flower-4g-1.webp",
     category: "ToeRings",
     collection: "daily-wear",
     isNew: false,
